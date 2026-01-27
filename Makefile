@@ -16,12 +16,14 @@ clean:
 	rm -f $(TARGET) $(OBJS)
 
 iwyu:
-    include-what-you-use -Xiwyu \
-            --mapping_file=/usr/share/include-what-you-use/iwyu.gcc.imp \
-            $(PKG_CFLAGS) \
-            $(SRCS)
+	include-what-you-use -Xiwyu \
+		--mapping_file=/usr/share/include-what-you-use/iwyu.gcc.imp \
+		$(SRCS)
 
 valgrind:
 	valgrind --tool=massif $(TARGET)
 
-.PHONY: all clean
+upx:
+	upx --best $(TARGET)
+
+.PHONY: all clean iwyu valgrind

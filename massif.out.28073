@@ -1,0 +1,47 @@
+desc: (none)
+cmd: ./diceware
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=444008
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=2740028
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=peak
+n1: 1024 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x4913025: _IO_file_doallocate (filedoalloc.c:91)
+  n1: 1024 0x4922EC2: _IO_doallocbuf (genops.c:373)
+   n1: 1024 0x4922EC2: _IO_doallocbuf (genops.c:368)
+    n1: 1024 0x4920D88: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:779)
+     n1: 1024 0x4921932: _IO_new_file_xsputn (fileops.c:1305)
+      n1: 1024 0x4921932: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1258)
+       n1: 1024 0x48EF306: __printf_buffer_flush_to_file (printf_buffer_to_file.c:59)
+        n1: 1024 0x48EF3E8: __printf_buffer_to_file_done (printf_buffer_to_file.c:120)
+         n1: 1024 0x48FA459: __vfprintf_internal (vfprintf-internal.c:1544)
+          n1: 1024 0x48EEA8E: printf (printf.c:33)
+           n0: 1024 0x4001270: ??? (in /memfd:upx (deleted))
+#-----------
+snapshot=3
+#-----------
+time=2740028
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
