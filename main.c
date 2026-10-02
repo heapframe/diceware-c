@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
         if (is_numeric) {
             char *end;
             long wc = strtol(c, &end, 10);
-            if (*end == '\0' && wc > 0 && wc < MAX_WORDS)
+            if (*end == '\0' && wc > 0 && wc <= MAX_WORDS)
                 wordCount = wc;
         }
     }
