@@ -16,18 +16,19 @@
 // small RNG buffer for efficiency
 uint8_t buf[64];
 size_t idx = sizeof(buf);
-uint8_t next_byte() {
-    if (idx >= sizeof(buf)) {
-        if (getrandom(buf, sizeof(buf), 0) != sizeof(buf)) {
-            for (int i = 0; i < 5; i++) {
-                if (getrandom(buf, sizeof(buf), 0) == sizeof(buf)) 
-                    break;
-            }
+uint8_t next_byte(void)
+{
+    if (idx == sizeof(buf)) {
+        ssize_t n = getrandom(buf, sizeof(buf), 0);
+
+        if (n != sizeof(buf)) {
             perror("getrandom");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
+
         idx = 0;
     }
+
     return buf[idx++];
 }
 
