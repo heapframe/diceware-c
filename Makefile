@@ -21,7 +21,7 @@ iwyu:
 		$(SRCS)
 
 valgrind:
-	valgrind --tool=massif $(TARGET)
+	valgrind --tool=massif ./$(TARGET)
 
 upx:
 	upx --best $(TARGET)

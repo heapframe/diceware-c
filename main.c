@@ -85,6 +85,8 @@ void lookup_word(char *mmap_start, size_t mmap_size, int key, char *out_word) {
 
 int main(int argc, char *argv[]) {
     int wordCount = 5;
+    char *seperator = " ";
+
     if (argc >= 2) {
         char *c = argv[1];
         int is_numeric = 1;
@@ -96,6 +98,11 @@ int main(int argc, char *argv[]) {
             if (*end == '\0' && wc > 0 && wc < MAX_WORDS)
                 wordCount = wc;
         }
+    }
+
+    if (argc >= 3) {
+        char *c = argv[2];
+        seperator = c;
     }
 
     int fd = open(WORDLIST_PATH, O_RDONLY);
@@ -110,9 +117,11 @@ int main(int argc, char *argv[]) {
 
     char word[WORD_BUFFER];
     for (int i = 0; i < wordCount; i++) {
+        if ((wordCount > 1 && i == wordCount - 1) || wordCount == 1) {seperator = "";}
+
         int dice = random_dice();
         lookup_word(map, filesize, dice, word);
-        printf("%s ", word);
+        printf("%s%s", word, seperator);
     }
     printf("\n");
 
